@@ -1,0 +1,878 @@
+[root@master manifests]# history
+    1  clear
+    2  top
+    3  clear
+    4  vi /etc/hosts
+    5  ifconfig
+    6  clear
+    7  systemctl stop firewalld
+    8  systemctl disable firewalld
+    9  date
+   10  swap -a
+   11  vi /etc/fstab
+   12  swapoof -a
+   13  swapoff -a
+   14  clear
+   15  vi /etc/selinux/config
+   16  setenforce 0
+   17  clear
+   18  init 6
+   19  clear
+   20  wget --content-disposition 'https:/pm/puppet.com/cgi-bin/download.cgi?dist=el&rel=7&arch=x86_64&ver=latest'
+   21  wget 'https:/pm/puppet.com/cgi-bin/download.cgi?dist=el&rel=7&arch=x86_64&ver=latest'
+   22  clear
+   23  wget https://drive.google.com/drive/folders/1n5f3Nt9Ayh2GItod7PPuHXNzGxkFrEDb?usp=sharing
+   24  ls -ltr
+   25  rm -fr 1n5f3Nt9Ayh2GItod7PPuHXNzGxkFrEDb\?usp\=sharing 
+   26  clear
+   27  wget https://drive.google.com/file/d/12oajzgHGdR4UokoKuyWJykFHM5-EeUT5/view?usp=sharing
+   28  ls -ltr
+   29  rm -fr view\?usp\=sharing 
+   30  clear
+   31  wget https://drive.google.com/file/d/12oajzgHGdR4UokoKuyWJykFHM5-EeUT5
+   32  ls -ltr
+   33  rm -fr 12oajzgHGdR4UokoKuyWJykFHM5-EeUT5 
+   34  clear
+   35  cat /etc/passwd
+   36  cp -fr /home/cloud/Downloads/* .
+   37  ls -ltr
+   38  chmod 777 pupp*
+   39  ls -ltr
+   40  pwd
+   41  clear
+   42  ifconfig
+   43  ping 192.168.85.39
+   44  clear
+   45  hostnamectl set-hostname master
+   46  init 6
+   47  ls -ltr
+   48  cd /var/lo
+   49  ls
+   50  cd /var/log
+   51  ls
+   52  cd puppetlabs/
+   53  ls
+   54  cd puppet
+   55  ls
+   56  cd ..
+   57  ls
+   58  cd puppetdb/
+   59  ls
+   60  tail -f puppetdb.log
+   61  ip addr
+   62  cat /etc/hosts
+   63  tail -f puppetdb.log
+   64  ping master.clouddata.com
+   65  vi /etc/hosts
+   66  ping master.clouddata.com
+   67  tail -f puppetdb.log
+   68  vi /etc/hosts
+   69  pwd
+   70  tail -f puppetdb.log
+   71  pwd
+   72  ls
+   73  cd /var/log/puppetlabs/puppetdb/
+   74  ls
+   75  tail -f puppetdb.log
+   76  ip addr
+   77  vi /etc/hosts
+   78  cat /etc/hsots
+   79  cat /etc/hosts
+   80  ssh minion
+   81  cat /etc/hotss
+   82  cat /etc/hosts
+   83  scp /etc/hosts minion:/etc/hosts
+   84  ls
+   85  cd /opt/puppetlabs/
+   86  find . -name pakage*
+   87  find . -name package*
+   88  ls
+   89  cd server/data/packages/public/
+   90  ls
+   91  cd current/
+   92  ls
+   93  more install.bash 
+   94           
+   95  systemctl status pe*
+   96  systemctl status pe*  |more
+   97     clear
+   98  puppet resource user root
+   99  puppet resource package ssh
+  100  puppet resource package openssh
+  101  rpm -qa |grep ssh
+  102  puppet resource service sshd
+  103  puppet resource file /tmp
+  104  puppet resource fie /etc/hosts
+  105  puppet resource file /etc/hosts
+  106  crontab -l
+  107  puppet resource cron
+  108  puppet resource exec
+  109  /opt/puppetlabs/server/bin/puppetserver ca lissssst
+  110  /opt/puppetlabs/server/bin/puppetserver ca list
+  111  export PATH=$PATH:/opt/puppetlabs/server/bin/puppetserver 
+  112  export PATH=$PATH:/opt/puppetlabs/server/bin/
+  113  puppetserver ca list --all
+  114  puppetserver ca list
+  115  puppetserver ca sign --certname minion
+  116  puppetserver ca list --all
+  117  puppet agent -t
+  118  pwd
+  119  cd /etc/puppetlabs/code/environments/production/modules/
+  120  ls
+  121  mkdir -p manifests/ssh
+  122  mkdir tests
+  123  cd tests
+  124  vi init.pp
+  125  ls
+  126  pwd
+  127  ls
+  128  cd ..
+  129  ls
+  130  mkdir ssh
+  131  mv manifests tests ssh/
+  132  ls
+  133  cd ssh/manifests/
+  134  ls
+  135  rm -r ssh
+  136  pwd
+  137  vi init.pp
+  138  puppet parser validate init.pp
+  139  pwd
+  140  cd ..
+  141  ls
+  142  puppet apply tests/init.pp 
+  143  puppet describe service
+  144  pwd
+  145  ls
+  146  cd manifests/
+  147  vi init.pp 
+  148  cd ..
+  149  ls
+  150  puppet apply tests/init.pp 
+  151  yum install tree
+  152  pwd
+  153  ls
+  154  cd ..
+  155  tree
+  156  pwd
+  157  vi ssh/manifests/init.pp 
+  158  puppet describe service |more
+  159  cd /etc/puppetlabs/code/environments/
+  160  ls
+  161  cd production/
+  162  ls
+  163  cd manifests/
+  164  ls
+  165  vi site.pp 
+  166  puppet agent -t
+  167  pwd
+  168  vi site.pp 
+  169  cd /etc/puppetlabs/code/environments/production/modules/
+  170  ls
+  171  cd ssh/
+  172  mkdir files
+  173  ls -ltr
+  174  cp /etc/ssh/sshd_config files/
+  175  cd files/
+  176  ls -ltr
+  177  cd ..
+  178  cd manifests/
+  179  vi init.pp 
+  180  cd ..
+  181  puppet parse validateee manifests/init.pp 
+  182  puppet parsed validateee manifests/init.pp 
+  183  puppet parse validate manifests/init.pp 
+  184  man puppet
+  185  puppet parser validate manifests/init.pp 
+  186  cd files/
+  187  ls
+  188  ls -ltr
+  189  chmod 644 sshd_config 
+  190  ls
+  191  ls -la
+  192  cd ..
+  193  ls
+  194  cd manifests/
+  195  ls
+  196  vi init.pp 
+  197  ls -l 
+  198  cat init.pp 
+  199  ls -l /etc/sshd/sshd_config
+  200  vi init.pp 
+  201  pwd
+  202  cd ..
+  203  cd files/
+  204  ls
+  205  vi sshd_config 
+  206  cat /etc/puppetlabs/code/environments/production/manifests/
+  207  ls
+  208  cd /etc/puppetlabs/code/environments/production/manifests/
+  209  ls
+  210  more site.pp 
+  211  pwd
+  212  cd ..
+  213  ls
+  214  cd modules/
+  215  ls
+  216  cd .
+  217  pwd
+  218  ls
+  219  mkdir http
+  220  cd http
+  221  ls
+  222  mkdir manifests
+  223  pwd
+  224  cd ../ssh
+  225  ls
+  226  cd manifests/
+  227  ls
+  228  cd ..
+  229  ls
+  230  cd ..
+  231  ls
+  232  vi http/
+  233  cd http/
+  234  ls
+  235  cd manifests/
+  236  vi init.pp
+  237  cd ..
+  238  ls
+  239  cd ..
+  240  ls
+  241  cat ssh/manifests/init.pp 
+  242  ls
+  243  vi http/manifests/init.pp 
+  244  pwd
+  245  ls
+  246  cd http/
+  247  ls
+  248  mkdir tests
+  249  vi tests/init.pp
+  250  puppet parser validate manifests/init.pp 
+  251  vi manifests/init.pp 
+  252  puppet parser validate manifests/init.pp 
+  253  vi manifests/init.pp 
+  254  puppet parser validate manifests/init.pp 
+  255  ls
+  256  cd ..
+  257  ls
+  258  cat ssh/manifests/init.pp 
+  259  ls
+  260  vi http/manifests/init.pp 
+  261  pwd
+  262  cd http/
+  263  puppet parser validate manifests/init.pp 
+  264  pwd
+  265  ls
+  266  vi manifests/
+  267  vi manifests/init.pp 
+  268  cat manifests/init.pp 
+  269  man puppet
+  270  vi manifests/init.pp 
+  271  pwd
+  272  cd ..
+  273  ls
+  274  mv http apache
+  275  cd apache/
+  276  ls
+  277  cd ..
+  278  cd ssh/
+  279  ls
+  280  cat manifests/init.pp 
+  281  cd ..
+  282  ls
+  283  cd apache/
+  284  ls
+  285  cd manifests/
+  286  ls
+  287  more init.pp 
+  288  pwd
+  289  puppet parcer validate init.pp
+  290  puppet parser validate init.pp
+  291  vi init.pp 
+  292  puppet parser validate init.pp
+  293  cd /etc/puppetlabs/code/environments/production/
+  294  ls
+  295  cd manifests/
+  296  more site.pp 
+  297  cleaar
+  298  cccclear
+  299  clear
+  300  rpm -qa |grep http
+  301  ps -ef |grep htt
+  302  history
+  303  pwd
+  304  ls
+  305  cd /etc/puppetlabs/code/environments/production/modules/ssh/
+  306  cd manifests/
+  307  more init.pp 
+  308  puppet describe host
+  309  puppet describe host |more
+  310  pwd
+  311  ls
+  312  cd ..
+  313  ls
+  314  cd ..
+  315  ls
+  316  mkdir host
+  317  cd host/
+  318  mkdir manifests
+  319  cd manifests/
+  320  ls
+  321  vi init.pp
+  322  puppet describe host
+  323  pwd
+  324  vi init.pp
+  325  cat init.pp 
+  326  ls
+  327  vi init.pp 
+  328  puppet parser validate init.pp 
+  329  vi init.pp 
+  330  puppet parser validate init.pp 
+  331  vi init.pp 
+  332  puppet parser validate init.pp 
+  333  cd ..
+  334  ls
+  335  cd ..
+  336  ls
+  337  mv host myhostfile
+  338  cd myhostfile/manifests/
+  339  ls
+  340  vi init.pp 
+  341  puppet parser validate init.pp 
+  342  cat /etc/hsots
+  343  cat /etc/hosts
+  344  puppet agent -t
+  345  cat /etc/hosts
+  346  vi init.pp 
+  347  puppet parser init.pp 
+  348  puppet parser validate init.pp 
+  349  puppet agent -t
+  350  pwd
+  351  cd ..
+  352  ls
+  353  mkdir motd
+  354  cd motd/
+  355  mkdir manifests tests
+  356  cd tests/
+  357  vi init.pp
+  358  cd ../../ssh/tests/
+  359  more init.pp 
+  360  cd ../..
+  361  ls
+  362  cd motd/manifests/
+  363  vi init.pp
+  364  puppet parser validate init.pp
+  365  puppet agetn -t
+  366  cat /etc/motd
+  367  puppet agent -t
+  368  cat /etc/motd
+  369  pwd
+  370  cd ..
+  371  mkdir files
+  372  cp /etc/motd files/
+  373  > /etc/motd 
+  374  cat /etc/motd
+  375  ssh minion
+  376  cd manifests/
+  377  vi init.pp 
+  378  puppet parcer validate init.pp
+  379  puppet parser validate init.pp
+  380  ssh minion
+  381  ls
+  382  cd ../..
+  383  ls
+  384  mkdir execute
+  385  cd execute/
+  386  mkdir manifests tests
+  387  cd tests/
+  388  vi init.pp
+  389  cd ..
+  390  cd manifests/
+  391  vi init.pp
+  392  pwd
+  393  cd ..
+  394  ls
+  395  mkdir files
+  396  cd files/
+  397  vi test.sh
+  398  ls -ltr
+  399  cd ..
+  400  ls
+  401  cd manifests/
+  402  puppet parser validate init.pp 
+  403  cat init.pp 
+  404  pwd
+  405  vi init.pp 
+  406  puppet parser validate init.pp 
+  407  vi init.pp 
+  408  puppet resource user root
+  409  pwd
+  410  cd ..
+  411  ls
+  412  cd ..
+  413  ls
+  414  mkdir myuser
+  415  cd myuser/
+  416  mkdir manifests tests
+  417  vi tests
+  418  cd tests/
+  419  vi init.pp
+  420  cd ..
+  421  pwd
+  422  ls
+  423  puppet resource user root
+  424  puppet resource user root >> manifests/init.pp
+  425  puppet resource group root >> manifests/init.pp
+  426  vi manifests/init.pp 
+  427  puppet parser validate init.pp
+  428  pwd
+  429  cd manifests/
+  430  puppet parser validate init.pp
+  431  openssl passwd -l
+  432  openssl passwd -1
+  433  vi init.pp 
+  434  puppet parser validate init.pp
+  435  pwd
+  436  cd ../../..
+  437  ls
+  438  cd manifests/
+  439  more site.pp 
+  440  ls
+  441  pwd
+  442  cd ../
+  443  ls
+  444  cd modules/ssh/manifests/
+  445  ls
+  446  more init.pp 
+  447  yum info openssh
+  448  yum info openssh-server
+  449  ls
+  450  cp init.pp init.ppold
+  451  pwd
+  452  vi init.pp
+  453  puppet parser validate init.pp
+  454  vi init.pp
+  455  puppet parser validate init.pp
+  456  vi init.pp
+  457  cat init.pp
+  458  puppet parser validate init.pp
+  459  cat init.pp
+  460  ls
+  461  vi init.pp
+  462  cd ../files/
+  463  ls
+  464  vi sshd_config 
+  465  cd -
+  466  vi init.pp
+  467  more init.pp
+  468  cd ../files/
+  469  vi sshd_config 
+  470  pwd
+  471  cd ../manifests/
+  472  ls
+  473  more init.pp
+  474  pwd
+  475  cd ..
+  476  ls
+  477  cd ..
+  478  ls
+  479  cd ..
+  480  ls
+  481  cd modules/
+  482  ls
+  483  cd apache/
+  484  ls
+  485  cd manifests/
+  486  ls
+  487  vi init.pp 
+  488  pwd
+  489  ls
+  490  cd ..
+  491  ls
+  492  mkdir files
+  493  cd files/
+  494  scp minion:/etc/httpd/conf/httpd.conf .
+  495  ls
+  496  ls -ltr
+  497  pwd
+  498  cd ..
+  499  ls
+  500  vi manifests/init.pp 
+  501  ls
+  502  pwd
+  503  cd manifests/
+  504  ls
+  505  vi init.pp 
+  506  puppet parser validate init.pp 
+  507  vi init.pp 
+  508  cd ../files/
+  509  ls
+  510  vi httpd.conf 
+  511  clear
+  512  pwd
+  513  cd ..
+  514  ls
+  515  cd manifests/
+  516  more init.pp 
+  517  cd ..
+  518  clear
+  519  ls
+  520  cd myhostfile/
+  521  cd ..
+  522  more myhostfile/manifests/init.pp 
+  523  more myuser/manifests/init.pp 
+  524  clear
+  525  ls
+  526  more execute/manifests/init.pp 
+  527  ls
+  528  cd execute/manifests/
+  529  more init.pp 
+  530  pwd
+  531  cd ..
+  532  mkdir tomcat
+  533  ls
+  534  rmdir tomcat
+  535  cd ..
+  536  ls
+  537  mkdir tomcat
+  538  cd tomcat
+  539  ls
+  540  mkdir manifests files
+  541  cd files/
+  542  wget class execute {
+  543    file { '/var/tmp/test.sh':
+  544     ensure => present,
+  545     mode => '0744',
+  546     source => "puppet:///modules/execute/test.sh",
+  547    }
+  548    exec {'/var/tmp/test.sh > /tmp/abc':
+  549    }
+  550  } 
+  551  class execute {
+  552    file { '/var/tmp/test.sh':
+  553     ensure => present,
+  554     mode => '0744',
+  555     source => "puppet:///modules/execute/test.sh",
+  556    }
+  557    exec {'/var/tmp/test.sh > /tmp/abc':
+  558    }
+  559  } 
+  560  pwd
+  561  ls
+  562  rm -r *
+  563  ls
+  564  wget class execute {
+  565    file { '/var/tmp/test.sh':
+  566     ensure => present,
+  567     mode => '0744',
+  568     source => "puppet:///modules/execute/test.sh",
+  569    }
+  570    exec {'/var/tmp/test.sh > /tmp/abc':
+  571    }
+  572  } 
+  573  ls
+  574  rm *
+  575  ls
+  576  clear
+  577  wget https://atgensoft.com/training/tomcat_exercise_data.zip --no-check-certificate
+  578  ls
+  579  unzip tomcat_exercise_data.zip 
+  580  ls
+  581  rm tomcat_exercise_data.zip 
+  582  cd __MACOSX/
+  583  ls
+  584  cd Tomcat_Exercise_Data/
+  585  ls
+  586  cd ..
+  587  ls
+  588  cd ..
+  589  ls
+  590  pwd
+  591  ls
+  592  rm __MACOSX
+  593  rmdir __MACOSX/
+  594  rm -r __MACOSX
+  595  ls
+  596  mv Tomcat_Exercise_Data/* .
+  597  ls
+  598  rm -rf Tomcat_Exercise_Data
+  599  ls
+  600  cd apache-tomcat-6.0.44/
+  601  ls
+  602  cd bin/
+  603  ls
+  604  cd ..
+  605  ls
+  606  cd bin/
+  607  ls
+  608  pwd
+  609  ls
+  610  pwd
+  611  ls
+  612  cd ..
+  613  ls
+  614  pwd
+  615  ls
+  616  ls temp/
+  617  ls
+  618  pwd
+  619  cd temp/
+  620  ls
+  621  cd ..
+  622  ls
+  623  cd ..
+  624  ls
+  625  cd ..
+  626  ls
+  627  vi manifests/init.ppp
+  628  vi manifests/init.pp
+  629  puppet parcer validate manifests/init.pp 
+  630  puppet parser validate manifests/init.pp 
+  631  vi manifests/init.pp
+  632  puppet parser validate manifests/init.pp 
+  633  ls
+  634  cd files/
+  635  ls
+  636  file sample.war 
+  637  cd apache-tomcat-6.0.44
+  638  ls
+  639  cd conf
+  640  ls
+  641  cd ..
+  642  ls
+  643  cd bin/
+  644  ls
+  645  pwd
+  646  cd ../..
+  647  ls
+  648  java -version
+  649  ls
+  650  pwd
+  651  ls
+  652  cd ..
+  653  ls
+  654  cd manifests/
+  655  vi init.pp 
+  656  ls
+  657  vi init.pp 
+  658  pwd
+  659  ls
+  660  cd ..
+  661  cd files/
+  662  ls
+  663  cddd apache-tomcat-6.0.44/
+  664  cd apache-tomcat-6.0.44/
+  665  ls
+  666  cd bin/
+  667  ls
+  668  cd ..
+  669  ls
+  670  cd ..
+  671  ls
+  672  cd ..
+  673  ls
+  674  cd manifests/
+  675  ls
+  676  vi init.pp 
+  677  puppet parser validate init.pp 
+  678  vi init.pp 
+  679  puppet parser validate init.pp 
+  680  vi        init.pp 
+  681  puppet parser validate init.pp 
+  682  vi init.pp 
+  683  cd ..
+  684  ls
+  685  cd ..
+  686  ls
+  687  cd myuser/manifests/
+  688  ls
+  689  more init.pp 
+  690  cd .
+  691  ls
+  692  cd ..
+  693  ls
+  694  cd ..
+  695  ls
+  696  vi apache/manifests/init.pp 
+  697  vi tomcat/manifests/init.pp 
+  698  puppet resource user elmo
+  699  vi tomcat/manifests/init.pp 
+  700  rpm -qp tomcat/files/jre-8u45-linux-x64.rpm 
+  701  vi tomcat/manifests/init.pp 
+  702  cd ..
+  703  vi tomcat/manifests/init.pp 
+  704  pwd
+  705  cd modules/
+  706  vi tomcat/manifests/init.pp 
+  707  history |grep rpm
+  708  vi tomcat/manifests/init.pp 
+  709  ls
+  710  vi motd/manifests/init.pp 
+  711  cd ../manifests/
+  712  vi site.pp 
+  713  ls
+  714  cd ..
+  715  ls
+  716  cd modules/
+  717  ls
+  718  cd motd/
+  719  ls
+  720  vi manifests/init.pp 
+  721  ls
+  722  cd ..
+  723  ls
+  724  vi myuser/manifests/init.pp 
+  725  puppet parser validate myuser/manifests/init.pp 
+  726  vi myuser/manifests/init.pp 
+  727  puppet parser validate myuser/manifests/init.pp 
+  728  ls
+  729  mkdir mail
+  730  cd mail
+  731  mkdir manifests
+  732  vi manifests/init.pp
+  733  cd ..
+  734  ls
+  735  cd ..
+  736  vi manifests/site.pp 
+  737  puppet parser validate modules/mail/manifests/init.pp 
+  738  vi  modules/mail/manifests/init.pp 
+  739  puppet parser validate modules/mail/manifests/init.pp 
+  740  vi  modules/mail/manifests/init.pp 
+  741  pwd
+  742  ls
+  743  cd ..
+  744  ls
+  745  cd ..
+  746  ls
+  747  cd modules/
+  748  ls
+  749  cd ..
+  750  ls
+  751  pwd
+  752  cd environments/production/modules/
+  753  ls
+  754  cd apache/
+  755  ls
+  756  cd manifests/
+  757  vi init.pp 
+  758  cd ..
+  759  ls
+  760  cd ..
+  761  ls
+  762  cd ..
+  763  ls
+  764  cd manifests/
+  765  ls
+  766  more site.pp 
+  767   pwd
+  768  cd ..
+  769  ls
+  770  cd modules/apache/
+  771  ls
+  772  cd manifests/
+  773  ls
+  774  vi init.pp 
+  775  puppet parser validate init.pp 
+  776  vi init.pp 
+  777  uname -a
+  778  cat /etc/redhat-release 
+  779  vi init.pp 
+  780  more ../../../manifests/site.pp 
+  781  vi init.pp 
+  782  puppet parser validate init.pp 
+  783  vi init.pp 
+  784  ls
+  785  cp init.pp init.bkp
+  786  ls
+  787  cd ..
+  788  ls
+  789  cd manifests/
+  790  ls
+  791  vi init.pp
+  792  cp init.bkp centos.pp
+  793  cp init.bkp upuntu.pp
+  794  vi centos.pp 
+  795  vi upuntu.pp 
+  796  ls
+  797  cat init.pp
+  798  puppet parser validate init.
+  799  puppet parser validate init.pp
+  800  tree
+  801  cd ..
+  802  tree
+  803  cd manifests/
+  804  ls
+  805  vi init.pp
+  806  puppet parser validate init.pp
+  807  vi init.pp
+  808  puppet parser validate init.pp
+  809  vi init.pp
+  810  puppet parser validate init.pp
+  811  vi init.pp
+  812  puppet parser validate init.pp
+  813  vi init.pp
+  814  puppet parser validate init.pp
+  815  vi init.pp
+  816  puppet parser validate init.pp
+  817  vi init.pp
+  818  puppet parser validate init.pp
+  819  vi init.pp
+  820  puppet parser validate init.pp
+  821  pwd
+  822  ls
+  823  tree
+  824  cd ..
+  825  tree
+  826  vi files/
+  827  cd files/
+  828  vi httpd.conf 
+  829  tree
+  830  cd ..
+  831  ls
+  832  tree 
+  833  cat manifests/init.pp
+  834  ls
+  835  cd manifests/
+  836  ls
+  837  mv upuntu.pp ubuntu.pp
+  838  tree
+  839  cat ubuntu.pp 
+  840  vi ubuntu.pp 
+  841  vi centos.pp 
+  842  vi init.
+  843  vi init.pp 
+  844  puppet parser validate init.
+  845  puppet parser validate init.pp
+  846  vi init.pp
+  847  cat init.pp
+  848  cd 
+  849  ls
+  850  cd puppet-enterprise-2021.7.0-el-7-x86_64/
+  851  ls
+  852  file puppet-enterprise-installer 
+  853  cat puppet-enterprise-installer 
+  854  cat puppet-enterprise-installer  |more
+  855  ls
+  856  cat puppet-enterprise-installer  |more
+  857  date +'%Y-%m-%dT%H.%M.%S%z'
+  858  echo (date +'%Y-%m-%dT%H.%M.%S%z')
+  859  echo $(date +'%Y-%m-%dT%H.%M.%S%z')
+  860  cat puppet-enterprise-installer  |more
+  861  ls
+  862  cd /etc/puppetlabs/code/environments/production/modules/
+  863  ls
+  864  cd apache/
+  865  ls
+  866  cd manifests/
+  867  ls
+  868  more centos.pp 
+  869  vi init.pp
+  870  vi centos.pp 
+  871  cat centos.pp
+  872  vi ubuntu.pp 
+  873  vi centos.pp 
+  874  cat init.pp
+  875  history
+[root@master manifests]# 
+[root@master manifests]# 
