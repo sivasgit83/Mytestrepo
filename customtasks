@@ -1,0 +1,53 @@
+[root@master modules]# tree welcome/
+welcome/
+├── manifests
+│   └── init.pp
+├── tasks
+│   ├── mytasks.json
+│   └── mytasks.sh
+└── templates
+    └── myfile.erb
+
+3 directories, 4 files
+[root@master modules]# cat welcome/tasks/mytasks.json 
+{
+     "description": "Displays first name/surname and age based on user input",
+     "input_method": "environment",
+     "parameters": {
+       "firstname": {
+           "description": "Provide a first name of least 2 characters",
+            "type": "String[2]"
+       },
+       "surname": {
+           "description": "Provide a surname",
+            "type": "Optional[String]"
+       },
+       "age": {
+             "description": "Provide your age",
+             "type": "Optional[Integer[18,100]]"
+       }
+     }
+}
+[root@master modules]# cat welcome/tasks/mytasks.sh 
+#!/bin/bash
+
+if [[ $PT_firstname ]] && [[ $PT_surname ]]; then
+   echo "Full name:" $PT_firstname $PT_surname
+else
+   echo "First name:" $PT_firstname
+fi
+
+if [[ $PT_age ]]; then
+   echo "Age:" $PT_age
+fi
+[root@master modules]# cp -fr welcome /root/.puppetlabs/bolt/modules/          ^C
+[root@master modules]# bolt task show  | grep welcome
+  welcome::mytasks                          Displays first name/surname and age based on user input
+[root@master modules]# bolt task run welcome::mytasks firstname=Sagar surname=Mehta age=38 --targets minion
+Started on minion...
+Finished on minion:
+  Full name: Sagar Mehta
+  Age: 38
+Successful on 1 target: minion
+Ran on 1 target in 0.53 sec
+[root@master modules]# 
