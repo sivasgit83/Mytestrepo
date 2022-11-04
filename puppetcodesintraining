@@ -1,0 +1,276 @@
+./ssh/manifests/init.pp
+===============================================
+class ssh {
+  file { '/etc/ssh/sshd_config':
+    ensure => 'file',
+    source => "puppet:///modules/ssh/sshd_config",
+#    require => Package['openssh-server'],
+#    before => Service['sshd'],
+     notify => Service['sshd']
+  }
+  service { 'sshd':
+    ensure => running,
+    enable => true,
+#    require => File['/etc/ssh/sshd_config']
+#  subscribe => File['/etc/ssh/sshd_config']
+  }
+  package { 'openssh-server':
+    ensure => present,
+    before => File['/etc/ssh/sshd_config'],
+  }
+}
+
+===============================================
+
+
+./ssh/tests/init.pp
+===============================================
+include ssh
+
+===============================================
+
+
+./apache/manifests/init.pp
+===============================================
+class apache {
+ case $::operatingsystem  {
+  'CentOS': { include apache::centos }
+  'Ubuntu': { include apache::ubuntu }
+  default: { fail(" Unsupported OS : ${operatingsystem}") }
+ }
+}
+
+===============================================
+
+
+./apache/manifests/ubuntu.pp
+===============================================
+class apache::ubuntu {
+  $pname = "apache2"
+  $cfile = "/etc/httpd/conf/httpd.conf"
+  package { $pname:
+    ensure => present,
+  }
+  file { '/etc/httpd/conf/httpd.conf':
+    ensure => $cfile:
+    source => "puppet:///modules/apache/httpd.conf",
+    notify => Service[$pname],
+  }
+  service { $pname:
+    ensure => running,
+    enable => true,
+  }
+}
+
+===============================================
+
+
+./apache/manifests/centos.pp
+===============================================
+class apache::centos {
+  $pname = "httpd"
+  $cfile = "/etc/httpd/conf/httpd.conf"
+  package { $pname:
+    ensure => present,
+  }
+  file { $cfile:
+    ensure => 'file',
+    source => "puppet:///modules/apache/httpd.conf",
+    notify => Service[$pname],
+  }
+  service { $pname:
+    ensure => running,
+    enable => true,
+  }
+}
+
+===============================================
+
+
+./apache/tests/init.pp
+===============================================
+include http
+
+===============================================
+
+
+./myhostfile/manifests/init.pp
+===============================================
+class myhostfile {
+  host { 'localhost1.localdomain.com':
+   ensure => 'present',
+   host_aliases => localhost1,
+   ip => '127.0.0.1',
+  }
+  host { 'labs.cloudadda.com':
+   ensure => 'present',
+   host_aliases => labs,
+   ip => '10.25.11.26',
+  }
+  notify { "this is test message": }
+}
+
+===============================================
+
+
+./motd/manifests/init.pp
+===============================================
+class motd {
+  $header = "Welcome to Puppet Wrold!"
+  $footer = " DXC Technologies "
+  $myname = "Sivaraman G"
+  file { '/etc/motd':
+   ensure => present,
+   content => template('motd/myfiles.erb'),
+  }
+}
+
+===============================================
+
+
+./motd/tests/init.pp
+===============================================
+include motd
+
+===============================================
+
+
+./motd/templates/myfiles.erb
+===============================================
+<%= '-' * 70 %>
+                         <%= @header %>
+<%= '-' * 70 %>
+HOSTNAME	 :  <%= @networking['hostname'] %>
+Opertating System:  <%= @os['distro']['description'] %> 
+IP address	 :  <%= @networking['ip'] %>
+System Uptime	 :  <%= @system_uptime['uptime'] %>
+Name 		 :  <%= @myname %>
+<%= '-' * 70 %>
+                         <%= @footer %>
+<%= '-' * 70 %>
+
+===============================================
+
+
+./execute/manifests/init.pp
+===============================================
+class execute {
+  file { '/var/tmp/test.sh':
+   ensure => present,
+   mode => '0744',
+   source => "puppet:///modules/execute/test.sh",
+  }
+  exec {'/var/tmp/test.sh > /tmp/abc':
+  }
+} 
+
+===============================================
+
+
+./execute/tests/init.pp
+===============================================
+include execute
+
+===============================================
+
+
+./myuser/manifests/init.pp
+===============================================
+class myuser {
+ $mysecgroup = ['testg1', 'testg2']
+ user { 'elmo':
+  ensure             => 'present',
+  comment            => 'elmo user',
+  gid                => sysadmin,
+  home               => '/home/elmo',
+  groups             => $mysecgroup,
+  managehome         => 'true',
+  password           => '$1$MnHsISGP$upjKufdUFnpVJP5xAVMLX0',
+  shell              => '/bin/bash',
+ }
+ group {'sysadmin':
+  ensure => 'present',
+ }
+ group { $mysecgroup: 
+  ensure   => 'present',
+ }
+}
+
+===============================================
+
+
+./myuser/tests/init.pp
+===============================================
+include myuser
+
+===============================================
+
+
+./tomcat/manifests/init.pp
+===============================================
+class tomcat {
+ user { 'tom':
+  ensure => 'present',
+  home => '/home/tom',
+  managehome => 'true',
+ }
+ file {'/var/tmp/jre-8u45-linux-x64.rpm':
+  ensure => present,
+  mode => '0755',
+  source => "puppet:///modules/tomcat/jre-8u45-linux-x64.rpm",
+ }
+ package { 'jre1.8.0_45-1.8.0_45-fcs.x86_64':
+  ensure => 'present',
+  provider => 'rpm',
+  source => '/var/tmp/jre-8u45-linux-x64.rpm',
+ }
+ file { '/home/tom':
+  ensure => 'directory',
+  recurse => 'true',
+  owner => 'tom',
+  group => 'tom',
+  mode => '0755',
+  source => "puppet:///modules/tomcat/apache-tomcat-6.0.44",
+ }
+ exec { '/home/tom/bin/startup.sh':
+  user => 'tom',
+  path => '/usr/bin:/usr/sbin:/bin',
+  unless => 'netstat -na |grep 8080', 
+ }
+}
+
+===============================================
+
+
+./mail/manifests/init.pp
+===============================================
+class mail {
+ $server = false
+ $client = true
+
+ if $server {
+  file { '/etc/server':
+   ensure => 'present',
+  }
+ }
+ else {
+  file { '/etc/server':
+   ensure => 'absent',
+  }
+}
+ if $client {
+  file { '/etc/client':
+   ensure => 'present',
+  }
+ }
+ else {
+  file { '/etc/client':
+   ensure => 'absent',
+  }
+ }
+}
+
+
+===============================================
+
+
